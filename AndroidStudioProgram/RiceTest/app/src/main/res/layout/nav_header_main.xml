@@ -30,7 +30,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="poornamith@live.com" />
+        android:text="Machine Vision (MEX5271) Mini Project" />
 
 
 </LinearLayout>

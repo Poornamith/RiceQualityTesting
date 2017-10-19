@@ -20,13 +20,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Team" />
-            <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_team"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Share" />
+                android:title="Team" />
         </menu>
     </item>
 
