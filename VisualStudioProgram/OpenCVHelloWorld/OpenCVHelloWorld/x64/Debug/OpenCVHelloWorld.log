@@ -1,0 +1,6 @@
+﻿  Source.cpp
+c:\users\poorna\documents\visual studio 2015\projects\opencvhelloworld\opencvhelloworld\source.cpp(98): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\poorna\documents\visual studio 2015\projects\opencvhelloworld\opencvhelloworld\source.cpp(107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\poorna\documents\visual studio 2015\projects\opencvhelloworld\opencvhelloworld\source.cpp(190): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  OpenCVHelloWorld.vcxproj -> C:\Users\poorna\Documents\Visual Studio 2015\Projects\OpenCVHelloWorld\x64\Debug\OpenCVHelloWorld.exe
+  OpenCVHelloWorld.vcxproj -> C:\Users\poorna\Documents\Visual Studio 2015\Projects\OpenCVHelloWorld\x64\Debug\OpenCVHelloWorld.pdb (Full PDB)
