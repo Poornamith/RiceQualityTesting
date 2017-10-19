@@ -156,8 +156,8 @@ public class MainActivity extends AppCompatActivity
                 }
                 catch (Exception ex) {
 
-                    textViewDebug.setText("Error!");
-                    Log.d(TAG, ex.getMessage());
+                    //textViewDebug.setText("Error!");
+                    Log.d(TAG, ex.getMessage() + ex.toString());
                 }
             }
         });
@@ -236,19 +236,27 @@ public class MainActivity extends AppCompatActivity
         area.clear();
         for (int contourIdx = 0; contourIdx < contours.size(); contourIdx++) {
 
-            area.add(Imgproc.contourArea(contours.get(contourIdx)));
+            double temper = Imgproc.contourArea(contours.get(contourIdx));
 
-            if ((area.get(contourIdx) > 300) && (area.get(contourIdx) < 3000)) {
-            Imgproc.drawContours(src, contours, contourIdx, new Scalar(255, 0, 0), 5);
+            if ((temper > 300) && (temper < 30000)) {
 
-            Log.d(TAG, "area: " + Double.toString(area.get(contourIdx)));
-            //count++;
+                area.add(Imgproc.contourArea(contours.get(contourIdx)));
+
+                Imgproc.drawContours(src, contours, contourIdx, new Scalar(255, 0, 0), 5);
+
+                //Log.d(TAG, "area: " + Double.toString(area.get(contourIdx)));
+                //count++;
             }
         }
 
-        grainsCount = contours.size();
-        Log.d(TAG, Integer.toString(grainsCount));
-        textViewDebug.setText(Integer.toString(grainsCount / 2 + 1));
+
+        //grainsCount = contours.size();
+        grainsCount = area.size();
+
+        //Log.d(TAG, Integer.toString(grainsCount));
+        textViewDebug.setText(Integer.toString(grainsCount));
+
+        //String val =
 
         //convert to Bitmap (Mat to Bitmap) to display in ImageView
         Bitmap bm = Bitmap.createBitmap(srcEdited.cols(), srcEdited.rows(), Bitmap.Config.ARGB_8888);
@@ -271,8 +279,8 @@ public class MainActivity extends AppCompatActivity
         double sum = 0;
         for (double val : area) {
 
-            sum += val;
-            Log.d(TAG, Double.toString(val));
+                sum += val;
+                Log.d(TAG, Double.toString(val));
         }
 
         Log.d(TAG, "Max: " + Double.toString(maxArea) + "Sum = " + sum);
@@ -289,13 +297,11 @@ public class MainActivity extends AppCompatActivity
             double grainAreaPara = (val / maxArea) * 100;
 
             //classify each grain and count
-            if(grainAreaPara >= mainLimitUpper) {
+            if (grainAreaPara >= mainLimitUpper) {
                 maxVal++;
-            }
-            else if(grainAreaPara >= mainLimitLower) {
+            } else if (grainAreaPara >= mainLimitLower) {
                 midVal++;
-            }
-            else {
+            } else {
                 minVal++;
             }
 
@@ -304,7 +310,7 @@ public class MainActivity extends AppCompatActivity
 
         Log.d(TAG, "Min: " + minVal + "Mid: " + midVal + "Max: " + maxVal);
 
-        //disply the values
+        //display the values
         maxVal =  (int)(((double)maxVal / (double)grainsCount ) * 100);
         midVal =  (int)(((double)midVal / (double)grainsCount ) * 100);
         minVal =  (int)(((double)minVal / (double)grainsCount ) * 100);
